@@ -154,7 +154,6 @@ export default function MediaTrimmer(): React.JSX.Element {
     }
   };
 
-  // Download the cut media
   const downloadMedia = (): void => {
     if (cutMediaURL && selectedFile) {
       const a = document.createElement('a');
@@ -167,7 +166,6 @@ export default function MediaTrimmer(): React.JSX.Element {
     }
   };
 
-  // Clean up object URLs when component unmounts
   React.useEffect(() => {
     return () => {
       if (mediaURL) URL.revokeObjectURL(mediaURL);
@@ -175,7 +173,6 @@ export default function MediaTrimmer(): React.JSX.Element {
     };
   }, [mediaURL, cutMediaURL]);
 
-  // Render media player based on type
   const renderMediaPlayer = (url: string, ref?: React.RefObject<HTMLVideoElement | HTMLAudioElement | null>) => {
     if (mediaType === 'video') {
       return (
@@ -202,7 +199,6 @@ export default function MediaTrimmer(): React.JSX.Element {
     }
   };
 
-  // Add this new function to handle both file and URL submissions:
   const handleSubmit = async () => {
     if (!selectedFile && !videoUrl) {
       setError('Please provide either a file or video URL');
@@ -214,6 +210,7 @@ export default function MediaTrimmer(): React.JSX.Element {
 
     try {
       if (videoUrl) {
+        console.log("The code control reached here: -> ")
         const response = await fetch(`/api/download?url=${encodeURIComponent(videoUrl)}`);
         if (!response.ok) {
           throw new Error('Failed to fetch video');
