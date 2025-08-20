@@ -6,11 +6,13 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "convert-hls": "node convert-to-hls.js"
   },
   "dependencies": {
     "@ffmpeg/core": "^0.11.0",
     "@ffmpeg/ffmpeg": "^0.11.0",
+    "hls.js": "^1.6.10",
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
